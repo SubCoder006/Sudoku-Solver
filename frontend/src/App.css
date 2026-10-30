@@ -1,0 +1,51 @@
+body { margin: 0; font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; }
+.app { max-width: 900px; margin: 0 auto; padding: 24px; }
+.layout { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
+
+.board {
+  display: grid; grid-template-columns: repeat(9, 52px); grid-auto-rows: 52px;
+  border: 3px solid #94a3b8; background: #1e293b;
+}
+.cell {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; border: 1px solid #334155; cursor: pointer; user-select: none;
+  transition: background 0.1s;
+}
+.cell.box-right { border-right: 3px solid #94a3b8; }
+.cell.box-bottom { border-bottom: 3px solid #94a3b8; }
+.cell.given { font-weight: 800; color: #f8fafc; }
+.cell:not(.given) { color: #7dd3fc; }
+.cell.selected { background: #334155; outline: 2px solid #38bdf8; outline-offset: -2px; }
+.cell.conflict { background: #7f1d1d; }
+.cell.trying { background: #854d0e; }
+.cell.backtracking { background: #991b1b; }
+.cell.solved { color: #4ade80; }
+
+.panel { display: flex; flex-direction: column; gap: 12px; min-width: 260px; }
+.row { display: flex; gap: 6px; }
+button, select {
+  padding: 8px 14px; border-radius: 6px; border: 1px solid #475569;
+  background: #1e293b; color: inherit; cursor: pointer; font-size: 15px;
+}
+button:hover:not(:disabled) { background: #334155; }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+.stats { font-size: 14px; color: #94a3b8; display: flex; flex-direction: column; gap: 4px; }
+.hint { font-size: 13px; color: #94a3b8; }
+.error { color: #f87171; }
+
+@media (max-width: 560px) {
+  .board { grid-template-columns: repeat(9, 38px); grid-auto-rows: 38px; }
+  .cell { font-size: 18px; }
+}
+
+.compare { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 12px; }
+.compare h3 { margin: 0 0 8px; font-size: 15px; }
+.cmp-row { margin-bottom: 10px; }
+.cmp-label { font-size: 13px; color: #94a3b8; }
+.cmp-bar-wrap { background: #0f172a; height: 14px; border-radius: 4px; overflow: hidden; margin: 3px 0; }
+.cmp-bar { height: 100%; min-width: 2px; }
+.cmp-bar.naive { background: #f87171; }
+.cmp-bar.mrv { background: #4ade80; }
+.cmp-nums { font-size: 13px; }
+.cmp-nums span { color: #94a3b8; }
+.cmp-summary { font-size: 14px; color: #4ade80; margin: 6px 0 0; }

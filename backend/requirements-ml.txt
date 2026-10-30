@@ -1,0 +1,9 @@
+-r requirements-dev.txt
+numpy
+opencv-python-headless
+pillow
+torch
+torchvision
+jupyterlab
+ipykernel
+matplotlib
